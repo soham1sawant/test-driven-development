@@ -6,4 +6,8 @@ class Repository {
   void addToCounter() {
     counter = counter + 1;
   }
+
+  void makeCounterZero() {
+    counter = 0;
+  }
 }

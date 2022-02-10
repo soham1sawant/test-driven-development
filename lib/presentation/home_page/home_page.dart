@@ -36,6 +36,24 @@ class HomePage extends StatelessWidget {
                 }
               },
             ),
+            InkWell(
+              child: Container(
+                height: 50.0,
+                width: 90.0,
+                color: Theme.of(context).primaryColor,
+                child: const Center(
+                    child: Text(
+                  "Zero",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+              ),
+              onTap: () {
+                BlocProvider.of<CounterBloc>(context).add(CounterMadeZero());
+              },
+            ),
           ],
         ),
       ),

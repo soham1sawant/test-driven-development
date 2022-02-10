@@ -80,6 +80,17 @@ void main() {
   );
 
   blocTest<CounterBloc, CounterState>(
+    "emits [CounterLoaded] when counter is made 0",
+    setUp: () async {
+      when(repository.loadCounter).thenAnswer((_) => 0);
+    },
+    build: () => mockHydratedStorage(() => CounterBloc(repository: repository)),
+    seed: () => const CounterLoaded(CounterModel(2)),
+    act: (bloc) => bloc.add(CounterMadeZero()),
+    expect: () => <CounterState>[const CounterLoaded(CounterModel(0))],
+  );
+
+  blocTest<CounterBloc, CounterState>(
     "emits [CounterLoadingError] when counter is not added successfully",
     setUp: () {
       when(repository.addToCounter).thenThrow(Exception("Error"));
