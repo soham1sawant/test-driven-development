@@ -16,6 +16,7 @@ class CounterBloc extends HydratedBloc<CounterEvent, CounterState> {
     on<CounterStarted>(_onStarted);
     on<CounterAdded>(_onCounterAdded);
     on<CounterMadeZero>(_onCounterMadeZero);
+    on<CounterSubtracted>(_onCounterSubtracted);
   }
 
   void _onStarted(CounterStarted event, Emitter<CounterState> emit) async {
@@ -36,6 +37,19 @@ class CounterBloc extends HydratedBloc<CounterEvent, CounterState> {
       try {
         repository.addToCounter();
         emit(CounterLoaded(CounterModel(state.counterModel.counter + 1)));
+      } catch (_) {
+        emit(CounterLoadingError());
+      }
+    }
+  }
+
+  void _onCounterSubtracted(CounterSubtracted event, Emitter<CounterState> emit) async {
+    final state = this.state;
+
+    if (state is CounterLoaded) {
+      try {
+        repository.subtractCounter();
+        emit(CounterLoaded(CounterModel(state.counterModel.counter - 1)));
       } catch (_) {
         emit(CounterLoadingError());
       }

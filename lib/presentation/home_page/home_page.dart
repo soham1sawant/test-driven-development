@@ -57,12 +57,25 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        tooltip: "Increment",
-        onPressed: () {
-          BlocProvider.of<CounterBloc>(context).add(CounterAdded());
-        },
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            child: const Icon(Icons.add),
+            tooltip: "Increment",
+            onPressed: () {
+              BlocProvider.of<CounterBloc>(context).add(CounterAdded());
+            },
+          ),
+          const SizedBox(height: 5.0),
+          FloatingActionButton(
+            child: const Icon(Icons.remove),
+            tooltip: "Increment",
+            onPressed: () {
+              BlocProvider.of<CounterBloc>(context).add(CounterSubtracted());
+            },
+          )
+        ],
       ),
     );
   }

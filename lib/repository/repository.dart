@@ -7,6 +7,10 @@ class Repository {
     counter = counter + 1;
   }
 
+  void subtractCounter() {
+    counter = counter - 1;
+  }
+
   void makeCounterZero() {
     counter = 0;
   }

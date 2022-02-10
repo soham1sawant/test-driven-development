@@ -19,6 +19,12 @@ class CounterAdded extends CounterEvent{
   List<Object> get props => [];
 }
 
+class CounterSubtracted extends CounterEvent{
+  
+  @override
+  List<Object> get props => [];
+}
+
 class CounterMadeZero extends CounterEvent{
   
   @override

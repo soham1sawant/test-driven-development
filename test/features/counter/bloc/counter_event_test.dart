@@ -14,5 +14,17 @@ void main() {
         expect(CounterAdded(), CounterAdded());
       });
     });
+
+    group("CounterSubtracted", () {
+      test("supports value comparison", () {
+        expect(CounterSubtracted(), CounterSubtracted());
+      });
+    });
+
+    group("CounterMadeZero", () {
+      test("supports value comparison", () {
+        expect(CounterMadeZero(), CounterMadeZero());
+      });
+    });
   });
 }
